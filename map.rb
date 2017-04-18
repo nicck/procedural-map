@@ -1,10 +1,9 @@
-require 'pry'
 require './noise.rb'
 require 'chunky_png'
 require 'digest/md5'
 
 class Map
-  def initialize(width: width, height: height)
+  def initialize(width:, height:)
     @width = width
     @height = height
     @noise = Noise.new
@@ -67,7 +66,7 @@ class Map
   end
 
   def open
-    `open #{filename}`
+    system "imgcat #{filename} && rm #{filename}"
   end
 
   private
@@ -84,7 +83,6 @@ class Map
   end
 end
 
-size = 500
-map = Map.new(width: size, height: size)
+map = Map.new(width: 500, height: 500)
 map.drawn
 map.open

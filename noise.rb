@@ -1,4 +1,10 @@
 class Noise
+  GRAD3 = [
+    [1,1,0], [-1,1,0], [1,-1,0], [-1,-1,0],
+    [1,0,1], [-1,0,1], [1,0,-1], [-1,0,-1],
+    [0,1,1], [0,-1,1], [0,1,-1], [0,-1,-1]
+  ]
+
   def octave_noise_2d(octaves, persistence, scale, x, y)
     total = 0.0
     frequency = scale
@@ -81,7 +87,7 @@ class Noise
       n0 = 0.0
     else
       t0 *= t0
-      n0 = t0 * t0 * dot2d(grad3[gi0], x0, y0)
+      n0 = t0 * t0 * dot2d(GRAD3[gi0], x0, y0)
     end
 
     t1 = 0.5 - x1*x1 - y1*y1
@@ -89,7 +95,7 @@ class Noise
       n1 = 0.0
     else
       t1 *= t1
-      n1 = t1 * t1 * dot2d(grad3[gi1], x1, y1)
+      n1 = t1 * t1 * dot2d(GRAD3[gi1], x1, y1)
     end
 
     t2 = 0.5 - x2*x2-y2*y2
@@ -97,7 +103,7 @@ class Noise
       n2 = 0.0
     else
       t2 *= t2
-      n2 = t2 * t2 * dot2d(grad3[gi2], x2, y2)
+      n2 = t2 * t2 * dot2d(GRAD3[gi2], x2, y2)
     end
 
     # Add contributions from each corner to get the final noise value.
@@ -109,14 +115,6 @@ class Noise
 
   def dot2d(g, x, y)
     return g[0]*x + g[1]*y
-  end
-
-  def grad3
-    [
-      [1,1,0], [-1,1,0], [1,-1,0], [-1,-1,0],
-      [1,0,1], [-1,0,1], [1,0,-1], [-1,0,-1],
-      [0,1,1], [0,-1,1], [0,1,-1], [0,-1,-1]
-    ]
   end
 
   def perm

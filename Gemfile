@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.4.0'
 
 gem 'chunky_png'
-
-gem 'pry'
-gem 'guard-shell'
+# gem 'oily_png'
