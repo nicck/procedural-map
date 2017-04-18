@@ -1,0 +1,14 @@
+name: map
+version: 0.0.0
+
+authors:
+  - Nickolay Abdrafikov <nicck.olay@gmail.com>
+
+dependencies:
+  stumpy_png:
+    github: l3kn/stumpy_png
+    version: "~> 4.1.1"
+
+crystal: 0.21.0
+
+license: MIT
